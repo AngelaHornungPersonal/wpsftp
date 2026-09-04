@@ -29,6 +29,7 @@ add_action('wp_ajax_wpsftp_crons', 'wp_ajax_wpsftp_crons');
 add_action('wp_ajax_wpsftp_keys', 'wp_ajax_wpsftp_keys');
 add_action('wp_ajax_wpsftp_logs', 'wp_ajax_wpsftp_logs');
 add_action('wp_ajax_wpsftp_servers', 'wp_ajax_wpsftp_servers');
+add_action('wp_ajax_wpsftp_test_connection', 'wp_ajax_wpsftp_test_connection');
 
 /**
  * @throws Exception

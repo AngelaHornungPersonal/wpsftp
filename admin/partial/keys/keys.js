@@ -1,7 +1,5 @@
 (function ($) {
   const pageInit = function() {
-    console.log('keys.js');
-
     //actions
     $('#new-keys').on('click', generateKeys);
     getKeys();
@@ -21,12 +19,10 @@
     })
   }
 
-  /*
-   * disabled while testing on my bench
-   */
   const generateKeys = function () {
+    console.log('generate keys');
     /* if called, means new keys are requested, post deletes, get regenerates if none are found */
-    /*$.post(WPSFTP_AJAX_URL, {
+    $.post(WPSFTP_AJAX_URL, {
       action: 'wpsftp_keys'
     }, function (response) {
       if (response.success === true) {
@@ -34,7 +30,7 @@
       } else {
         toastr.error(response.message);
       }
-    });*/
+    });
   }
 
   $(document).ready(function() {
