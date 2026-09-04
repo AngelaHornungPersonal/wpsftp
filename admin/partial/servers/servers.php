@@ -30,6 +30,7 @@
         of your choosing, clone x site's directory into this one. Allowing you to keep an upto date clone
         ready for deployment at a moment's notice. </p>
         <a class="btn btn-primary" id="connection-test">Test Connection</a>
+        <a class="btn btn-primary" id="sftp-test">Test SFTP</a>
     </div>
 </div>
 <div class="row" hidden>

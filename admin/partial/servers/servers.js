@@ -7,6 +7,7 @@
 
     $serverForm.on('submit', updateServers);
     $connectionTest.on('click', testConnection);
+    $('#sftp-test').on('click', testSFTP);
     getServers();
   };
 
@@ -52,6 +53,14 @@
       } else {
         toastr.error(response.message);
       }
+    })
+  }
+
+  const testSFTP = function () {
+    $.post(WPSFTP_AJAX_URL, {
+      action: 'wpsftp_test_sftp'
+    }, function(response){
+      console.log(response);
     })
   }
 

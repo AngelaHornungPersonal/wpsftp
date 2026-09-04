@@ -13,6 +13,7 @@ require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'wpsftpConfig.php');
 require WPSFTP_ROOT_DIR_PATH . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
 require_once(WPSFTP_UTIL_DIR_PATH . DIRECTORY_SEPARATOR . 'wpsftp-db.php');
 require_once(WPSFTP_UTIL_DIR_PATH . DIRECTORY_SEPARATOR . 'wpsftp-ajax.php');
+require_once(WPSFTP_UTIL_DIR_PATH . DIRECTORY_SEPARATOR . 'wpsftp-cron.php');
 
 //hooks
 register_activation_hook(__FILE__, 'wpsftp_activate');
@@ -30,6 +31,7 @@ add_action('wp_ajax_wpsftp_keys', 'wp_ajax_wpsftp_keys');
 add_action('wp_ajax_wpsftp_logs', 'wp_ajax_wpsftp_logs');
 add_action('wp_ajax_wpsftp_servers', 'wp_ajax_wpsftp_servers');
 add_action('wp_ajax_wpsftp_test_connection', 'wp_ajax_wpsftp_test_connection');
+add_action('wp_ajax_wpsftp_test_sftp', 'wpsftp_cron_job');
 
 /**
  * @throws Exception
