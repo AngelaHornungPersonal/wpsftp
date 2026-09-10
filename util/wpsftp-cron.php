@@ -34,6 +34,7 @@ function downloadRemoteDirectory(SFTP $sftp, string $remoteDirectory, string $lo
         mkdir($localDirectory, 0755, true);
     }
 
+    //line 38 is throwing an invalid size error
     $files = $sftp->rawList($remoteDirectory);
     if ($files === false) {
         return;
