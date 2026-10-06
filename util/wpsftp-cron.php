@@ -1,6 +1,7 @@
 <?php
 
 use phpseclib3\Crypt\PublicKeyLoader;
+use phpseclib3\Net\SSH2;
 use phpseclib3\Net\SFTP;
 function wpsftp_cron_job() {
     global $wpdb;
@@ -12,9 +13,13 @@ function wpsftp_cron_job() {
 
         //set no timeout, disconnect once done with download
         $sftp = new SFTP($server[0]->ip, $server[0]->port, 0);
+
         if (!$sftp->login($server[0]->username, $pvKey)) {
             throw new \Exception("SFTP login failed");
         }
+
+        //dangerous
+        $sftp->enableArbitraryLengthPackets();
 
         $remoteDirectory = '/wp-content/uploads';
         $localDirectory = WP_CONTENT_DIR . '/uploads/wpsftp-downloads';
@@ -35,11 +40,15 @@ function downloadRemoteDirectory(SFTP $sftp, string $remoteDirectory, string $lo
     }
 
     //line 38 is throwing an invalid size error
-    $files = $sftp->rawList($remoteDirectory);
+    $files = $sftp->rawList($remoteDirectory, true);
     if ($files === false) {
         return;
     }
-    foreach($sftp->rawList($remoteDirectory) as $fileName => $file) {
+
+    var_dump($files);
+    die("Hooray!");
+
+    /*foreach($sftp->rawList($remoteDirectory) as $fileName => $file) {
         if ($fileName == '.' || $fileName == '..') {
             continue;
         }
@@ -52,5 +61,5 @@ function downloadRemoteDirectory(SFTP $sftp, string $remoteDirectory, string $lo
         } else {
             $sftp->get($remotePath, $localPath);
         }
-    }
+    }*/
 }

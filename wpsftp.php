@@ -8,6 +8,7 @@
  * Prefix: wpsftp
  */
 
+//namespace WPSFTP;
 //load classes and configs
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'wpsftpConfig.php');
 require WPSFTP_ROOT_DIR_PATH . DIRECTORY_SEPARATOR . 'vendor/autoload.php';
@@ -20,7 +21,7 @@ register_activation_hook(__FILE__, 'wpsftp_activate');
 register_deactivation_hook(__FILE__, 'wpsftp_deactivate');
 register_uninstall_hook(__FILE__, 'wpsftp_uninstall');
 
-//actions
+//actions (actions are hooks, outdated language due to how old Wordpress is)
 add_action('admin_menu', 'wpsftp_admin_menu');
 add_action('wp_enqueue_scripts', 'wpsftp_wp_enqueue_scripts');
 add_action('admin_enqueue_scripts', 'wpsftp_wp_enqueue_scripts');
@@ -31,6 +32,8 @@ add_action('wp_ajax_wpsftp_keys', 'wp_ajax_wpsftp_keys');
 add_action('wp_ajax_wpsftp_logs', 'wp_ajax_wpsftp_logs');
 add_action('wp_ajax_wpsftp_servers', 'wp_ajax_wpsftp_servers');
 add_action('wp_ajax_wpsftp_test_connection', 'wp_ajax_wpsftp_test_connection');
+
+//temporary
 add_action('wp_ajax_wpsftp_test_sftp', 'wpsftp_cron_job');
 
 /**

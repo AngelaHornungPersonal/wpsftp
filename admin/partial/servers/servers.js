@@ -57,6 +57,7 @@
   }
 
   const testSFTP = function () {
+    console.log('testSFTP');
     $.post(WPSFTP_AJAX_URL, {
       action: 'wpsftp_test_sftp'
     }, function(response){
